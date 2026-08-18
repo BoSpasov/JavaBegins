@@ -1,0 +1,32 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+
+    public static void main(String[] args) throws InterruptedException
+    {
+
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter how many times you want to loop: ");
+        int stop = scanner.nextInt();
+
+        for (int i = 1; i <=  stop; i++) {
+            System.out.println(i);
+        }
+
+
+        System.out.print("How many seconds to countdown from");
+        int start = 10;
+
+        for (int i = start; i > 0 ; i--) {
+            System.out.println("Happy New Year!");
+            Thread.sleep(1000);
+
+        }
+
+
+        scanner.close();
+    }
+}
