@@ -1,0 +1,32 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+
+    public static void main(String[] args)
+    {
+      Scanner scanner = new Scanner(System.in);
+      double temp;
+      double newTemp;
+      String unit;
+      String oppositUnit;
+
+        System.out.print("Convert to Celsius or Fahrenheit? (C or F): ");
+        unit = scanner.nextLine().toUpperCase();
+
+        oppositUnit = (unit.equals("C")) ? "F" : "C";
+
+        System.out.printf("Enter the temperature in %s: ", oppositUnit);
+        temp = scanner.nextDouble();
+
+
+
+        newTemp = unit.equals("F") ?  (temp * 5/9) + 32 : (temp - 32) * 5/9;
+
+        System.out.printf("%.1f %s", newTemp, unit);
+
+      scanner.close();
+
+
+    }
+}
