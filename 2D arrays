@@ -1,0 +1,44 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+
+    public static void main(String[] args) throws InterruptedException
+    {
+       Scanner scanner = new Scanner(System.in);
+
+       String[] fruits = {"apple", "orange", "banana"};
+       String[] vegetables = {"potato", "onion", "carrot"};
+       String[] meats = {"chicken", "pork", "beef", "fish"};
+
+       String[][] groceries= {fruits, vegetables, meats};
+
+       groceries[0][0] = "pineapple";
+       groceries[1][2] = "tomato";
+
+
+
+       for(String[] foods: groceries) {
+           for (String item : foods) {
+               System.out.print(item + " ");
+
+           } System.out.println();
+       }
+
+
+
+       char[][] telephone = {{'1','2','3'},
+                            {'4','5','6'},
+                            {'7','8','9'},
+                            {'*','0','#'}};
+
+       for(char[] row: telephone){
+           for(char number : row){
+               System.out.print(number + " ");
+           }
+           System.out.println();
+       }
+       scanner.close();
+    }
+
+}
