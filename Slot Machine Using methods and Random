@@ -1,0 +1,126 @@
+import java.sql.SQLOutput;
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+
+    public static void main(String[] args) throws InterruptedException
+    {
+        Scanner scanner = new Scanner(System.in);
+        int balance = 100;
+        int bet;
+        int payout;
+        String[] row;
+        String playAgain;
+
+        System.out.println("*********************");
+        System.out.println("Welcome to Java slots");
+        System.out.println("Symbols: \uD83C\uDF52 \uD83C\uDF49 \uD83C\uDF4B \uD83D\uDD14 ⭐");
+        System.out.println("*********************");
+
+
+        while (balance > 0) {
+            System.out.println("Current balance: $" + balance);
+            System.out.print("Place your bet amount: ");
+            bet = scanner.nextInt();
+
+            if(bet > balance ) {
+
+                System.out.println("INSUFFICIENT FUNDS!");
+                continue;
+
+            } else if( bet <= 0) {
+                System.out.println("Bet must be greater than 0");
+                continue;
+            } else {
+                balance -= bet;
+            }
+
+            System.out.println("Spinning...");
+            row = spinRow();
+            printRow(row);
+
+            payout = getPayout(row, bet);
+
+            if(payout > 0){
+                System.out.println("You won $" + payout);
+                balance += payout;
+            } else {
+                System.out.println("Sorry you lost this round");
+            }
+
+            System.out.println("Do you want to play again? (Y/N)");
+            scanner.nextLine();
+            playAgain = scanner.nextLine().toUpperCase();
+
+            if(!playAgain.equals("Y")) {
+                break;
+            }
+
+        }
+
+        System.out.println("Game over your final balance is $ " + balance);
+
+        scanner.close();
+//🍒 🍋 🍉 🔔 ⭐
+    }
+
+    static String[] spinRow(){
+
+        String[] symbols = {"🍒", "🍋", "🍉", "🔔", "⭐"};
+        String[] row = new String[3];
+        Random random = new Random();
+
+
+
+
+        for (int i = 0; i < 3; i++) {
+            row[i] =  symbols[random.nextInt(symbols.length)];
+
+        }
+
+        return row;
+    }
+
+    static void printRow (String[] row){
+        System.out.println("**************");
+        System.out.println(" " + String.join(" |", row));
+        System.out.println("**************");
+
+    }
+
+    static int getPayout(String[] row, int bet){
+
+        if(row[0].equals(row[1]) && row[0].equals(row[2])) {
+            return switch(row[0]){
+                case "\uD83C\uDF52" -> bet * 3;
+                case "\uD83C\uDF49" -> bet * 4;
+                case "\uD83C\uDF4B" -> bet * 5;
+                case "\uD83D\uDD14" -> bet * 10;
+                case "⭐" -> bet * 20;
+                default -> 0;
+            };
+        } else if(row[0].equals(row[1])) {
+            return switch(row[0]){
+                case "\uD83C\uDF52" -> bet * 2;
+                case "\uD83C\uDF49" -> bet * 3;
+                case "\uD83C\uDF4B" -> bet * 4;
+                case "\uD83D\uDD14" -> bet * 5;
+                case "⭐" -> bet * 10;
+                default -> 0;
+            };
+        } if(row[1].equals(row[2])) {
+            return switch(row[1]){
+                case "\uD83C\uDF52" -> bet * 3;
+                case "\uD83C\uDF49" -> bet * 4;
+                case "\uD83C\uDF4B" -> bet * 5;
+                case "\uD83D\uDD14" -> bet * 10;
+                case "⭐" -> bet * 20;
+                default -> 0;
+            };
+        }
+
+        return 0;
+    }
+
+}
