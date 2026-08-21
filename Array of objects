@@ -1,0 +1,56 @@
+import java.sql.SQLOutput;
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+
+    public static void main(String[] args) throws InterruptedException
+    {
+        Scanner scanner = new Scanner(System.in);
+        Car car1 = new Car("Mustang", "red");
+        Car car2 = new Car("Corvette", "blue");
+        Car car3 = new Car("Charger", "yellow");
+
+        Car[] cars = {car1, car2, car3};
+
+        Car[] cars1 = {new Car("Blob", "mlue"),
+                        new Car("pegote", "black")};
+
+
+
+
+        for(Car car : cars){
+            car.drive();
+        }
+
+        for(Car car : cars1){
+            car.color = "pink";
+        }
+
+        for(Car car: cars1){
+            System.out.println(car.color);
+        }
+
+
+        scanner.close();
+
+    }
+
+}
+
+
+//public class Car {
+//
+//    String model;
+//    String color;
+//
+//    Car(String model, String color) {
+//        this.model = model;
+//        this.color = color;
+//    }
+//
+//    void drive(){
+//        System.out.println("You drive the " + this.color + " " + this.model);
+//    }
+//}
+
