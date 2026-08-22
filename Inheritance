@@ -1,0 +1,81 @@
+import java.sql.SQLOutput;
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+
+    public static void main(String[] args) throws InterruptedException
+    {
+        Scanner scanner = new Scanner(System.in);
+        Dog dog = new Dog();
+        Cat cat = new Cat();
+        Plant plant = new Plant();
+
+        System.out.println(dog.isAlive);
+        System.out.println(cat.isAlive);
+
+        dog.eat();
+        cat.eat();
+
+        dog.speak();
+        cat.speak();
+        plant.photosyntesize();
+
+
+
+        scanner.close();
+
+    }
+
+}
+
+
+//public class Organism {
+//
+//    boolean isAlive;
+//
+//    Organism (){
+//        isAlive = true;
+//    }
+//}
+
+
+
+//public class Plant extends Organism{
+//
+//    void photosyntesize(){
+//        System.out.println("The plant absorbs sunlight");
+//    }
+//}
+
+
+//public class Animal extends Organism {
+//
+//
+//    void eat(){
+//        System.out.println("The animal is eating.");
+//    }
+//}
+
+
+
+//public class Dog extends Animal{
+//
+//    int lives = 1;
+//
+//    void speak(){
+//        System.out.println("The dog goes wuf");
+//    }
+//}
+
+
+//public class Cat extends Animal{
+//
+//    int lives = 9;
+//
+//    void speak(){
+//        System.out.println("The cat goes meaw");
+//    }
+//}
+
+
