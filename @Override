@@ -1,0 +1,49 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+
+    public static void main(String[] args) throws InterruptedException
+    {
+        Scanner scanner = new Scanner(System.in);
+        Dog dog = new Dog();
+        Cat cat = new Cat();
+        Fish fish = new Fish();
+
+        dog.move();
+        cat.move();
+        fish.move();
+
+
+
+        scanner.close();
+
+    }
+
+}
+
+
+//public class Animal {
+//
+//
+//    void move(){
+//        System.out.println("This animal is running");
+//
+//    }
+//}
+
+
+//public class Fish extends Animal{
+//
+//    @Override
+//    void move(){
+//        System.out.println("This animal is swimming.");
+//    }
+//}
+
+
+//public class Cat extends Animal {
+//}
+
+//public class Dog extends Animal{
+//}
