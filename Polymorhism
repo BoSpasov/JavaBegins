@@ -1,0 +1,63 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+
+    public static void main(String[] args) throws InterruptedException
+    {
+        Scanner scanner = new Scanner(System.in);
+        Car car = new Car();
+        Boat boat = new Boat();
+        Bike bike = new Bike();
+
+        Vehicle2[] vehicles = {car, boat, bike};
+
+
+
+        for(Vehicle2 vehicle : vehicles) {
+            vehicle.go();
+        }
+
+
+
+        scanner.close();
+
+    }
+
+}
+//public interface Vehicle2 {
+//
+//    void go();
+//}
+
+
+//public abstract class Vehicle {
+//    abstract void go();
+//}
+
+
+//public class Bike implements Vehicle2{
+//
+//    @Override
+//    public void go(){
+//        System.out.println("You ride the bike.");
+//    }
+//}
+
+
+//public class Boat implements Vehicle2{
+//    @Override
+//    public void go(){
+//        System.out.println("You sail the boat.");
+//    }
+//}
+
+
+//public class Car implements Vehicle2{
+//
+//
+//    @Override
+//    public void go(){
+//        System.out.println("You drive the car.");
+//    }
+//}
