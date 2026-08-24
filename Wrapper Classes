@@ -1,0 +1,61 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+
+    public static void main(String[] args) throws InterruptedException
+    {
+        Scanner scanner = new Scanner(System.in);
+
+
+
+//        Integer a = new Integer(123);
+//        Double b = new Double (3.13);
+//        Character c = new Character('$');
+//        Boolean d = new Boolean(true);
+        //Autoboxing
+//        Integer a = 123;
+//        Double b = 3.13;
+//        Character c = '$';
+//        Boolean d = true;
+
+        //String e = "Pizza";
+
+
+
+        //Unboxing
+//        int x = a;
+//        double y = b;
+//        char k = c;
+//        boolean j = d;
+
+//        String a = Integer.toString(123);
+//        String b = Double.toString(3.13);
+//        String c = Character.toString('$');
+//        String d = Boolean.toString(false);
+//
+//        String x = a + b + c + d;
+//
+//        System.out.println(x);
+
+
+        //char[] c = Character.toChars(125);
+
+//        int a = Integer.parseInt("123");
+//        double b = Double.parseDouble("3.13");
+//        char c = "Pizza".charAt(0);
+//        boolean d = Boolean.parseBoolean("true");
+
+        char letter = '$';
+        System.out.println(Character.isLetter(letter));
+        System.out.println(Character.isUpperCase(letter));
+
+
+        System.out.println();
+
+
+        scanner.close();
+
+    }
+
+}
