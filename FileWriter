@@ -1,0 +1,28 @@
+import java.io.*;
+import java.sql.SQLOutput;
+
+public class Main {
+
+    public static void main(String[] args) throws InterruptedException, IOException {
+
+
+        String filePath = "test1.txt";
+        String content = "I like pizza";
+
+        try(FileWriter writer = new FileWriter(filePath)){ // I can write the full location in the place of test1.txt\
+            //use C:\\Users\\HP\\Desktop.... to escape the forward slash
+            writer.write(content);
+            System.out.println("File has been written");
+
+
+        }catch (FileNotFoundException e){
+            System.out.println("Could not locate file location.");
+
+        }
+        catch (IOException e){
+            System.out.println("Couldn't write in file.");
+        }
+
+    }
+
+}
