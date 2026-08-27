@@ -1,0 +1,130 @@
+import javax.swing.text.html.parser.Entity;
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws InterruptedException, IOException {
+
+        String filePath = "C:\\Users\\boris\\Desktop\\ExamTest.txt";
+        int counter = 1;
+        ArrayList<String> words = new ArrayList<>();
+
+        try(Scanner scanner = new Scanner(System.in);BufferedReader reader = new BufferedReader(new FileReader(filePath))){
+            Random random = new Random();
+            int num;
+            String randomWord;
+            ArrayList<Character>  randomWordZero= new ArrayList<>();
+            String line = "";
+
+            while ((line = reader.readLine()) != null) {
+                words.add(line);
+                System.out.printf("%d. %s\n", counter, line);//
+                counter++;
+            }
+
+            num = random.nextInt(words.size()); //choose the word from the file on random
+            randomWord = words.get(num).toLowerCase(); // it gets the word
+
+             //Creates new word where we will put our guesses
+            //System.out.println(randomWord);
+
+
+            int rongGuess = 0;
+
+            for (int i = 0; i < randomWord.length(); i++) {
+                randomWordZero.add('_');
+
+            }
+//            Arrays.fill(randomWordZero, '_');
+
+//            for (int i = 0; i < randomWordZero.length; i++){
+//                randomWordZero[i] = '_';
+//            }
+//            for (char c : randomWordZero){
+//                c = '_';
+//            }
+
+            do {
+                System.out.println();
+                System.out.print("The word is: ");
+                for (char c : randomWordZero) {
+                    System.out.print(c + " ");
+                }
+                System.out.println();
+
+
+                System.out.print("Enter a guess: ");
+                char letter = scanner.next().toLowerCase().charAt(0);
+
+
+                //Replaces all the underscores with the correct letter if it isn't already replaced.
+                if (randomWord.indexOf(letter)>= 0) {
+
+
+
+                   if(randomWordZero.contains(letter)) {
+
+
+                       System.out.println();
+                       System.out.println("************");
+                       System.out.println("You already guessed this letter correctly");
+                       System.out.println("************");
+                       continue;
+
+                   } else {
+
+                       System.out.println();
+                       System.out.println("************");
+                       System.out.println("You guessed correctly!");
+                       System.out.println("************");
+
+                       for (int i = 0; i < randomWord.length(); i++){
+                           if(randomWord.charAt(i) == letter){
+
+                               randomWordZero.set(i,letter);
+
+                           }
+                       }
+                   }
+                    if(!randomWordZero.contains('_')){
+                        System.out.println();
+                        System.out.println("You win. ");
+                        System.out.println("The word was: " + randomWord);
+                        break;
+                    }
+
+                } else {
+                    rongGuess++;
+                    System.out.println();
+                    System.out.println("************");
+                    System.out.println("Wrong guess");
+                    System.out.println("You have " + (6 - rongGuess) + " left");
+                    System.out.println("*************");
+
+                }
+            }while (rongGuess < 6) ;
+
+            if (rongGuess >= 6){
+                System.out.println("You lost the game.");
+                System.out.println("The word was: "+ randomWord);
+            }
+
+        }
+        catch(InputMismatchException e) {
+            System.out.println("Enter valid input");
+        }
+        catch (FileNotFoundException e){
+            System.out.println("File not found");
+        }
+        catch (IOException e){
+            System.out.println("Something went wrong");
+        }
+
+
+
+
+
+    }
+
+}
