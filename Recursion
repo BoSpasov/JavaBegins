@@ -1,0 +1,34 @@
+public class Main {
+    public static void main(String[] args){
+
+        String text = "abccba";
+        if(isPalindrom(text)){
+            System.out.println("It is a pali");
+        } else {
+            System.out.println("It is not");
+        }
+
+
+    }
+
+    public static boolean isPalindrom(String str){
+
+// if length is 0 or 1 then String is palindrome
+
+        if(str.length() == 0/*str.isEmpty()*/ || str.length() == 1)
+
+            return true;
+
+        /* check if the first and the last symbols are equal.         and  continue with the next internal couple of symbols.              */
+
+        if(str.charAt(0) == str.charAt(str.length()-1)) {
+
+            String sub = str.substring(1, str.length()-1);
+            System.out.println(sub);
+            return isPalindrom(sub);
+        }
+
+        return false;
+
+    }
+}
