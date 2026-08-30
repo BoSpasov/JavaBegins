@@ -1,0 +1,37 @@
+import java.lang.Thread;
+
+public class Main extends Thread{
+    public static void main(String[] args){
+
+        MyThread th = new MyThread("NameOfThread");
+        th.start();
+        System.out.println("I am the main thread");
+
+
+        System.out.println(th.getName());
+        System.out.println(th.threadId());
+        System.out.println(th.getPriority());
+        System.out.println(th.getState());
+//        th.interrupt();
+        System.out.println(th.isAlive());
+//       th.join();
+    }
+
+
+
+}
+
+
+//public class MyThread extends Thread {
+//    public MyThread(String name){
+//        super(name);
+//    }
+//
+//    void print(){
+//        System.out.println("I am a thread");
+//    }
+//    @Override
+//    public void run() {
+//        this.print();
+//    }
+//}
