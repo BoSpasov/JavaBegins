@@ -1,0 +1,72 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args){
+
+        ArrayConstruction arrConstr = new ArrayConstruction();
+
+        arrConstr.create();
+
+        Arrays.sort(arrConstr.array);
+        arrConstr.print();
+
+
+        int[] arr = arrConstr.array;
+        int numCounter = 0;
+
+        int allNums = 0;
+        for (int i = 0; i < arr.length; i++) {
+
+
+            if(i + 1 == arr.length){
+                numCounter++;
+                allNums++;
+                System.out.println("The count of the number " + arr[i] + " is: " + numCounter);
+                break;
+            }
+
+            if (arr[i] == arr[i + 1]){
+                numCounter++;
+                allNums++;
+                continue;
+            } else {
+                numCounter++;
+                allNums++;
+                System.out.println("The count of the number " + arr[i] + " is: " + numCounter);
+                numCounter = 0;
+                continue;
+            }
+
+        }
+        System.out.println(allNums);
+
+    }
+}
+
+//public class ArrayConstruction {
+//
+//    int[] array = new int[1500];
+//
+//    public ArrayConstruction(){
+//        for (int i = this.array.length - 1; i >= 0 ; i--) {
+//            this.array[i] = i;
+//
+//        }
+//    }
+//
+//    public void create(){
+//        for (int i = 0; i < this.array.length ; i++) {
+//            this.array[i] = (int)(Math.random() * 100);
+//
+//        }
+//        System.out.println("Creation finished");
+//    }
+//
+//    public void print(){
+//        for (int num : this.array){
+//            System.out.print(num + " ");
+//        }
+//        System.out.println();
+//    }
+//}
