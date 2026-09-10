@@ -1,0 +1,189 @@
+import java.io.IOException;
+
+public class EventProcessing {
+    public static Concert[] concerts = null;
+    public static VolleyBallMatch[] voleyMatches = null;
+    private static final int SIZE_OF_OBJECT_BUFFER = 100;
+
+    public static void main(String[] args){
+
+        System.out.println("Only for testing: ");
+
+        try {
+            processTickets();
+        } catch (IOException e1){
+            e1.printStackTrace();
+        }
+
+        Concert c = concerts[0];
+        try{
+            c.sellTicket(500);
+            c.sellTicket(20000);
+        } catch (NoMoreTicketsException e){
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public static void processTickets() throws IOException {
+        System.out.println("Processing...");
+        concerts = new Concert[SIZE_OF_OBJECT_BUFFER];
+        voleyMatches = new VolleyBallMatch[SIZE_OF_OBJECT_BUFFER];
+        TicketLoader t = new TicketLoader();
+        Event[] arrayOfEvents = (Event[]) t.importDataFromFile();
+        int i = 0;
+        int j = 0;
+        for (Event e : arrayOfEvents) {
+            if (e instanceof Concert) {
+                concerts[i++] = (Concert) e;
+            } else if (e instanceof VolleyBallMatch) {
+                voleyMatches[j++] = (VolleyBallMatch) e;
+            }
+        }
+        System.out.println("Process of importing finished.");
+        System.out.println("Num of loaded concerts: " + i);
+        System.out.println("Num of loaded volleyballs: " + j);
+    }
+
+}
+
+
+//public abstract class Event {
+//    protected String place;
+//    protected String date;
+//    protected String startHour;
+//    protected int numberOfTickets;
+//    protected double priceOfTickets;
+//
+//    public Event(String place, String date, String startHour, int numberOfTickets, double priceOfTickets){
+//        this.place = place;
+//        this.date = date;
+//        this.startHour = startHour;
+//        this.numberOfTickets = numberOfTickets;
+//        this.priceOfTickets = priceOfTickets;
+//
+//    }
+//
+//    public abstract boolean sellTicket(int numberOfTickets)throws NoMoreTicketsException;
+//}
+
+
+//public class Concert extends Event{
+//    String starName;
+//
+//    public Concert(String starName,String place, String date, String startHour, int numberOfTickets, double priceOfTickets){
+//        super(place, date, startHour, numberOfTickets, priceOfTickets);
+//        this.starName = starName;
+//    }
+//    @Override
+//    public boolean sellTicket(int num)throws NoMoreTicketsException{
+//        if(this.numberOfTickets - num > 0 ){
+//            this.numberOfTickets -= num;
+//            System.out.println("There are " + numberOfTickets + " left");
+//            return true;
+//        } else throw new NoMoreTicketsException(this.starName);
+//
+//
+//    }
+//}
+
+
+//public class VolleyBallMatch extends Event{
+//    protected String firstTeam;
+//    protected String secondTeam;
+//
+//
+//    public VolleyBallMatch(  String firstTeam, String secondTeam,String place, String date, String startHour, int numberOfTickets, double priceOfTickets ){
+//        super(place, date, startHour, numberOfTickets, priceOfTickets);
+//        this.firstTeam = firstTeam;
+//        this.secondTeam = secondTeam;
+//    }
+//
+//
+//
+//
+//    @Override
+//    public boolean sellTicket(int num)throws NoMoreTicketsException{
+//        if(this.numberOfTickets - num > 0 ){
+//            this.numberOfTickets -= num;
+//            System.out.println("There are " + numberOfTickets + " left");
+//            return true;
+//        } else throw new NoMoreTicketsException(this.firstTeam, this.secondTeam);
+//
+//
+//    }
+//}
+
+
+//public class NoMoreTicketsException extends RuntimeException {
+//    private String nameOfEvent;
+//    private String firstTeam;
+//    private String secondTeam;
+//
+//    public NoMoreTicketsException(String nameOfEvent) {
+//        super();
+//        this.nameOfEvent = nameOfEvent;
+//
+//    }
+//
+//    public NoMoreTicketsException(String firstTeam, String secondTeam){
+//        super();
+//        this.firstTeam = firstTeam;
+//        this.secondTeam = secondTeam;
+//    }
+//
+//    public String getMessage() {
+//        if(nameOfEvent != null){
+//            return "There is no more tickets for: " + this.nameOfEvent;
+//        } else {
+//            return "There are no more tickets for the match " + this.firstTeam + "-" + this.secondTeam;
+//        }
+//
+//    }
+//}
+
+
+//public class NoMoreTicketsException extends RuntimeException {
+//    private String nameOfEvent;
+//    private String firstTeam;
+//    private String secondTeam;
+//
+//    public NoMoreTicketsException(String nameOfEvent) {
+//        super();
+//        this.nameOfEvent = nameOfEvent;
+//
+//    }
+//
+//    public NoMoreTicketsException(String firstTeam, String secondTeam){
+//        super();
+//        this.firstTeam = firstTeam;
+//        this.secondTeam = secondTeam;
+//    }
+//
+//    public String getMessage() {
+//        if(nameOfEvent != null){
+//            return "There is no more tickets for: " + this.nameOfEvent;
+//        } else {
+//            return "There are no more tickets for the match " + this.firstTeam + "-" + this.secondTeam;
+//        }
+//
+//    }
+//}
+
+
+//import java.io.IOException;
+//
+//public interface Importable {
+//
+//
+//    Object[] importDataFromFile() throws IOException;
+//}
+
+
+//import java.io.IOException;
+//
+//public interface Importable {
+//
+//
+//    Object[] importDataFromFile() throws IOException;
+//}
