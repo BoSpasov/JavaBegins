@@ -1,0 +1,13 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Main {
+    public static void main(String[] args){
+        Pattern pattern = Pattern.compile("b[oiue]r");//[B][a-z]{4,}; [A-Za-z]{5,}
+        Matcher matcher = pattern.matcher("bor bir bur ber");
+        boolean isMatching = matcher.find();
+        boolean isMatching3 = matcher.matches();
+        System.out.println(isMatching);
+
+    }
+}
